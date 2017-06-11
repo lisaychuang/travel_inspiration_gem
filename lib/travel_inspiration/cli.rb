@@ -16,6 +16,7 @@ module TravelInspiration
             while input != "exit" 
                 puts "Please select a theme from 1 - 12"
                 input = gets.strip.to_i
+                
             end
 
         end

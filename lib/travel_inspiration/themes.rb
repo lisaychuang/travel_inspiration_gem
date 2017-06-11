@@ -16,13 +16,12 @@ module TravelInspiration
         def self.scrape_themes
             themes_list = []
             doc = Nokogiri::HTML(open("https://www.lonelyplanet.com/"))
-            themes = doc.search('div.slick-track a.slick-slide')
-            themes.each_with_index{
-                |theme, index|
+            themes = doc.search('div.slick-track a.slick-slide') #selects carousel slides
+            themes.each_with_index{|theme, index|
                 if index < 12 then
-                    new_theme = TravelInspiration::Theme.new
-                    new_theme.name = theme.css("p").text
-                    new_theme.url = theme.attr("href")
+                    new_theme = TravelInspiration::Theme.new #create theme instance
+                    new_theme.name = theme.css("p").text     #assign theme name
+                    new_theme.url = theme.attr("href")       #assign theme url for destination #scraping
                     themes_list[index] = new_theme
                 end
             }
