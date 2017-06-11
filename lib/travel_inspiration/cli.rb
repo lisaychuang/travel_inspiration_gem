@@ -49,6 +49,7 @@ module TravelInspiration
                     puts "----------------------" #horizontal divider
 
                     country = TravelInspiration::Destination.scrape_destinations(input-1)[input-1].name
+                    binding.pry
                     puts "Here's a brief introduction about #{country.upcase}, and the best time to travel there!"
                     country_details(input)
                 else
