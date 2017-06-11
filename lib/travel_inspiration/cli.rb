@@ -58,7 +58,8 @@ module TravelInspiration
         end
 
         def country_details(input)
-            puts "About this country"
+            puts TravelInspiration::Destination.scrape_destinations(input-1)[input-1].url
+        
         end
         
 
