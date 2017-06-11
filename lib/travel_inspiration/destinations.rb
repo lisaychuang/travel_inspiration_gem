@@ -5,11 +5,9 @@ require 'pry'
 module TravelInspiration
     class Destination
         attr_accessor :name, :continent, :url
-        #Take user input 1 - 12
-        #Use URL from TravelInspiration::Theme  #scrape_themes result
-
-        def self.list_destination_names
-            destination_list = self.scrape_destinations
+        
+        def self.list_destination_names(input)
+            destination_list = self.scrape_destinations(input)
             destination_list.map.with_index{|d, index|
             "#{index+1}. #{d.name}, #{d.continent}"
             }
@@ -17,9 +15,10 @@ module TravelInspiration
 
         #scrape data using URL
 
-        def self.scrape_destinations
+        def self.scrape_destinations(input)
+            url = TravelInspiration::Destination.get_url(input)
             list = []
-            doc = Nokogiri::HTML(open("https://www.lonelyplanet.com/beaches-coasts-and-islands/"))
+            doc = Nokogiri::HTML(open(url))
             destinations = doc.search('div.SightsList-wrap a') #selects 6 destinations 
             
             destinations.map.with_index{ |destination, index|
@@ -33,6 +32,13 @@ module TravelInspiration
             list.sort_by! {|obj| obj.name}
             list
         end
+        
+        #Using user_input, get theme URL to scrape for destinations
+        def self.get_url(user_input)
+            url = TravelInspiration::Theme.scrape_themes[user_input].url
+            url
+        end
+
     end
 end
 
