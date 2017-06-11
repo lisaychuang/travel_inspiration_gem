@@ -2,15 +2,15 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/travel_inspiration`. To experiment with that code, run `bin/console` for an interactive prompt.
 
-TODO: Delete this and the text above, and describe your gem
+This Ruby Gem provides a CLI to view 12 travel inspiration themes, sourced from [Lonely Planet](https://www.lonelyplanet.com/) website. Users can choose a theme and view the top 6 destinations, and drill-down to see more details of each destination. 
 
 ## Installation
-
+<!--
 Add this line to your application's Gemfile:
 
 ```ruby
 gem 'travel_inspiration'
-```
+```-->
 
 And then execute:
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```gem install travel_inspiration```
 
 ## Development
 
