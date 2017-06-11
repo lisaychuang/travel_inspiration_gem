@@ -7,11 +7,17 @@ module TravelInspiration
         end
 
         def list_themes
-            puts "Hello! What travel inspiration will you like to explore for your next trip?"
+            puts "Hello! Which travel inspiration will you like to explore for your next trip?"
             TravelInspiration::Theme.list_theme_names
         end
 
         def menu
+            input = nil
+            while input != "exit" 
+                puts "Please select a theme from 1 - 12"
+                input = gets.strip.to_i
+            end
+
         end
 
         def goodbye

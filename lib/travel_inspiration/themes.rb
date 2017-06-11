@@ -5,19 +5,6 @@ require 'pry'
 module TravelInspiration
     class Theme
         attr_accessor :name, :url
-        
-    # Road trips
-    # Travel gear and tech
-    # Travel on a budget
-    # Wildlife and nature
-    # Adventure travel
-    # Art and culture
-    # Backpacking
-    # Beaches, coasts and islands
-    # Family holidays
-    # Festivals
-    # Food and drink
-    # Honeymoon and romance
 
         def self.list_theme_names
             themes_list = self.scrape_themes
@@ -46,3 +33,16 @@ end
 
 # puts 'Hello'
 # newThemes = TravelInspiration::Theme.new
+
+    # Road trips
+    # Travel gear and tech
+    # Travel on a budget
+    # Wildlife and nature
+    # Adventure travel
+    # Art and culture
+    # Backpacking
+    # Beaches, coasts and islands
+    # Family holidays
+    # Festivals
+    # Food and drink
+    # Honeymoon and romance
