@@ -7,7 +7,6 @@ module TravelInspiration
         def start
             list_themes
             select_theme
-            select_country
             goodbye
         end
 
@@ -38,6 +37,7 @@ module TravelInspiration
             puts "Please select a destination from 1 - 6"
             puts TravelInspiration::Destination.list_destination_names(input-1)
             puts "----------------------" #horizontal divider
+            select_country
         end
 
         def select_country
@@ -45,14 +45,22 @@ module TravelInspiration
             while input != "exit"
                 input = gets.strip.to_i
 
-                if input > 0 && input < 6
-                    puts "Which destination will you like to explore? Enter 1 - 6"
-                    input = gets.strip.to_i
+                if input > 0 && input < 7
+                    puts "----------------------" #horizontal divider
+
+                    country = TravelInspiration::Destination.scrape_destinations(input-1)[input-1].name
+                    puts "Here's a brief introduction about #{country.upcase}, and the best time to travel there!"
+                    country_details(input)
                 else
-                    puts "That selection is not valid. Try again, or type exit."
+                    puts "That selection is not valid. Please select a country from 1-6, or type exit."
                 end
             end
         end
+
+        def country_details(input)
+            puts "About this country"
+        end
+        
 
         def goodbye
             puts "Farewell, traveler! May the wind take you somewhere new!"

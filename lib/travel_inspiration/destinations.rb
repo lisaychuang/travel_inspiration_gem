@@ -28,8 +28,7 @@ module TravelInspiration
                 new_destination.url = destination.attr("href")
                 list[index] = new_destination
             } 
-            list.sort_by! {|obj| obj.continent}
-            list.sort_by! {|obj| obj.name}
+            list.sort_by! {|obj| [obj.continent, obj.name]}
             list
         end
         
