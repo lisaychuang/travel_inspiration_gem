@@ -7,10 +7,7 @@ module TravelInspiration
         attr_accessor :name, :continent, :url
         
         def self.list_destination_names(input)
-            destination_list = self.scrape_destinations(input)
-            destination_list.map.with_index{|d, index|
-            "#{index+1}. #{d.name}, #{d.continent}"
-            }
+            self.scrape_destinations(input)
         end
 
         #scrape data using URL

@@ -9,7 +9,7 @@ module TravelInspiration
         def self.list_theme_names
             themes_list = self.scrape_themes
             themes_list.map.with_index{|theme, index|
-            "#{index+1}. #{theme.name}"
+            "\t#{index+1}. #{theme.name}"
             }
         end
 

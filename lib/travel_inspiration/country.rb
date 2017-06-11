@@ -8,20 +8,28 @@ require_relative 'destinations.rb'
 module TravelInspiration
     class Country
         attr_accessor :name, :url, :high_season, :low_season, :best_visit_season, :summary_quote, :details
-
+        
         @country = TravelInspiration::Country.new #Creates new Country object
 
-        def self.country_info(user_input)
-            self.scrape_season(user_input) #set seasonality information
+        def initialize(name)
+            @country_name = name
+        end    
 
-            self.scrape_info(user_input) #set country name, summary_quote and details
+        def self.country_info(chosen_country)
+            self.scrape_season(chosen_country) #set seasonality information
+            self.scrape_info(chosen_country) #set country name, summary_quote and details
+
+            puts "\t#{@country.best_visit_season}!\n
+                  #{@country.high_season}\n
+                  #{@country.low_season}\n"
+            puts "#{@country.summary_quote}".blue.on_yellow
+            puts @country.details
         end
 
         #scrape country information
-        def self.scrape_info(user_input)
-            @country.name = TravelInspiration::Destination.scrape_destinations(user_input-1)[user_input-1].name
-            
-            url = @country.url
+        def self.scrape_info(chosen_country)
+            @country.name = chosen_country
+            url = self.get_url(chosen_country)
             doc = Nokogiri::HTML(open(url))
 
             info_url = doc.search("#introduction article.love-letter a").attr("href").text
@@ -42,15 +50,12 @@ module TravelInspiration
             @country.details = subtitles.map.with_index{|title, index|
                  "\n" + title.upcase + "\n" + descriptions[index] + "\n"
             }
-
-            puts @country.details
         end
 
-
         #scrape best time to visit from Country/weather website
-        def self.scrape_season(user_input)
+        def self.scrape_season(chosen_country)
 
-            url = TravelInspiration::Country.get_url(user_input) #get country's url from user_input in CLI.rb
+            url = self.get_url(chosen_country)
             doc = Nokogiri::HTML(open(url))
             
             seasonality_url = doc.search("#survival-guide ul li:nth-child(2) a").attr("href").text #get country weather url
@@ -58,18 +63,17 @@ module TravelInspiration
             
             #get high, low, and best time to visit information
             @country.high_season = weather_pg.search("div.card--page__content p:nth-child(1)").text
-            @country.best_visit_season = weather_pg.search("div.card--page__content p:nth-child(3)").first.text
             @country.low_season = weather_pg.search("div.card--page__content p:nth-child(5)").first.text
-            
+
+            shoulder_season = weather_pg.search("div.card--page__content p:nth-child(3)").first.text
+            @country.best_visit_season = "Best time to visit " + shoulder_season[16..-1]
         end
 
         #Using user_input, get country URL to scrape information 
-        def self.get_url(user_input)
-            url = TravelInspiration::Destination.scrape_destinations(user_input-1)[user_input-1].url
-            @country.url = url
+        def self.get_url(chosen_country)
+            "https://www.lonelyplanet.com/" + chosen_country.downcase.sub(" ", "-") 
         end
     end
 end
 
-puts "Hello"
-puts TravelInspiration::Country.country_info(1)
+# puts TravelInspiration::Country.country_info(6)
