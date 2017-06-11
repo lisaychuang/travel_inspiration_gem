@@ -3,24 +3,15 @@
 This Ruby Gem provides a CLI to view 12 travel inspiration themes, sourced from [Lonely Planet](https://www.lonelyplanet.com/) website. Users can choose a theme and view the top 6 destinations, and drill-down to see more details of each destination. 
 
 ## Installation
-<!--
-Add this line to your application's Gemfile:
+You can install this gem by typing the following prompt in terminal:
 
-```ruby
-gem 'travel_inspiration'
-```-->
+```gem install travel_inspiration```
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install travel_inspiration
+The ```travel_inspiration``` CLI will be installed and you can run ```inspire_me``` to get a list of travel inspiration themes right in your command line.
 
 ## Usage
 
-```gem install travel_inspiration```
+Run: ```inspire_me``` after installing the gem.
 
 ## Development
 
