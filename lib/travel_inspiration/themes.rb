@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'pry'
 
 module TravelInspiration
     class Theme
@@ -18,6 +19,13 @@ module TravelInspiration
     # Food and drink
     # Honeymoon and romance
 
+        def self.list_theme_names
+            themes_list = self.scrape_themes
+            themes_list.map.with_index{|theme, index|
+            "#{index+1}. #{theme.name}"
+            }
+        end
+
         def self.scrape_themes
             themes_list = []
             doc = Nokogiri::HTML(open("https://www.lonelyplanet.com/"))
@@ -31,14 +39,10 @@ module TravelInspiration
                     themes_list[index] = new_theme
                 end
             }
-            puts themes_list
             themes_list
         end
     end
 end
-# puts "hello"
-# themes = TravelInspiration::Theme.scrape_themes
-# puts themes.map{
-#     |theme|
-#     "#{theme.name} #{theme.url}"
-# }
+
+# puts 'Hello'
+# newThemes = TravelInspiration::Theme.new
