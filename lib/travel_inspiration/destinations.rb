@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
 
 module TravelInspiration
     class Destination
@@ -11,7 +10,6 @@ module TravelInspiration
         end
 
         #scrape data using URL
-
         def self.scrape_destinations(theme_name)
             list = []
 
@@ -29,10 +27,5 @@ module TravelInspiration
             list.sort_by! {|obj| [obj.continent, obj.name]}
             list
         end
-
     end
 end
-
-# puts "Hello"
-# puts TravelInspiration::Destination.list_destination_names
-

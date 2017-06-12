@@ -1,7 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
-
 require_relative 'themes.rb'
 require_relative 'destinations.rb'
 
@@ -38,7 +36,6 @@ module TravelInspiration
 
             descriptions = info_page.search("div.copy--body p.copy--body").to_a
             descriptions = descriptions.map {|d| d.text}
-
             descriptions.reject!{|item|
                 item.downcase.end_with?("writer")
             }
@@ -50,7 +47,6 @@ module TravelInspiration
 
         #scrape best time to visit from Country/weather website
         def scrape_season
-
             doc = Nokogiri::HTML(open(url))
             
             seasonality_url = doc.search("#survival-guide ul li:nth-child(2) a").attr("href").text #get country weather url
@@ -69,5 +65,3 @@ module TravelInspiration
         end
     end
 end
-
-# puts TravelInspiration::Country.country_info(6)

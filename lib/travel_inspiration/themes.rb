@@ -1,6 +1,5 @@
 require 'nokogiri'
 require 'open-uri'
-require 'pry'
 
 module TravelInspiration
     class Theme
@@ -30,19 +29,3 @@ module TravelInspiration
         end
     end
 end
-
-# puts 'Hello'
-# newThemes = TravelInspiration::Theme.new
-
-    # Road trips
-    # Travel gear and tech
-    # Travel on a budget
-    # Wildlife and nature
-    # Adventure travel
-    # Art and culture
-    # Backpacking
-    # Beaches, coasts and islands
-    # Family holidays
-    # Festivals
-    # Food and drink
-    # Honeymoon and romance

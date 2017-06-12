@@ -8,9 +8,10 @@ Gem::Specification.new do |spec|
   spec.version       = TravelInspiration::VERSION
   spec.authors       = ["Lisa Huang"]
   spec.email         = ["lisa.yc.huang@gmail.com"]
+  spec.executables   << 'bin/inspire_me'
 
   spec.summary       = %q{"A ruby gem to view travel inspiration by themes"}
-  spec.description   = %q{"A ruby gem to view travel inspiration by themes. Users will learn about the top 6 destinations!"}
+  spec.description   = %q{"A ruby gem to view Lonely Planet travel inspiration by themes. You will learn about the top 6 destinations!"}
   spec.homepage      = "https://github.com/lisaychuang/travel_inspiration_gem"
   spec.license       = "MIT"
 
