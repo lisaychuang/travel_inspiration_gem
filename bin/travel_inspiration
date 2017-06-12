@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "travel_inspiration"
+require "lib/travel_inspiration"
 
 TravelInspiration::CLI.new.start
