@@ -8,7 +8,6 @@ Gem::Specification.new do |spec|
   spec.version       = TravelInspiration::VERSION
   spec.authors       = ["Lisa Huang"]
   spec.email         = ["lisa.yc.huang@gmail.com"]
-  spec.executables   << 'bin/inspire_me'
 
   spec.summary       = %q{"A ruby gem to view travel inspiration by themes"}
   spec.description   = %q{"A ruby gem to view Lonely Planet travel inspiration by themes. You will learn about the top 6 destinations!"}
@@ -35,5 +34,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "pry"
   spec.add_dependency "nokogiri", "~> 1.8"
-  spec.add_dependency "colorize"
+  spec.add_dependency "colorize", "~> 0.8.1"
 end
