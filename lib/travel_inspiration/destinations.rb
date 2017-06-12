@@ -6,15 +6,16 @@ module TravelInspiration
     class Destination
         attr_accessor :name, :continent, :url
         
-        def self.list_destination_names(input)
-            self.scrape_destinations(input)
+        def self.list_destination_names(theme_name)
+            self.scrape_destinations(theme_name)
         end
 
         #scrape data using URL
 
-        def self.scrape_destinations(input)
-            url = TravelInspiration::Destination.get_url(input)
+        def self.scrape_destinations(theme_name)
             list = []
+
+            url = TravelInspiration::Theme.url_for_theme_name(theme_name)
             doc = Nokogiri::HTML(open(url))
             destinations = doc.search('div.SightsList-wrap a') #selects 6 destinations 
             
@@ -27,12 +28,6 @@ module TravelInspiration
             } 
             list.sort_by! {|obj| [obj.continent, obj.name]}
             list
-        end
-        
-        #Using user_input, get theme URL to scrape for destinations
-        def self.get_url(user_input)
-            url = TravelInspiration::Theme.scrape_themes[user_input].url
-            url
         end
 
     end

@@ -7,10 +7,7 @@ module TravelInspiration
         attr_accessor :name, :url
 
         def self.list_theme_names
-            themes_list = self.scrape_themes
-            themes_list.map.with_index{|theme, index|
-            "\t#{index+1}. #{theme.name}"
-            }
+            self.scrape_themes
         end
 
         def self.scrape_themes
@@ -26,6 +23,10 @@ module TravelInspiration
                 end
             }
             themes_list
+        end
+
+        def self.url_for_theme_name(theme_name)
+            "https://www.lonelyplanet.com/#{theme_name.downcase.sub(" ", "-")}/"
         end
     end
 end
