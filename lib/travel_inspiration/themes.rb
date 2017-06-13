@@ -25,7 +25,7 @@ module TravelInspiration
         end
 
         def self.url_for_theme_name(theme_name)
-            "https://www.lonelyplanet.com/#{theme_name.downcase.sub(" ", "-")}/"
+            "https://www.lonelyplanet.com/#{theme_name.downcase.gsub!(" ", "-").gsub!(",", "")}/"
         end
     end
 end

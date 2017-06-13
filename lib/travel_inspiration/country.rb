@@ -16,9 +16,9 @@ module TravelInspiration
             scrape_info #set country name, summary_quote and details
 
             puts "\t#{@best_visit_season}!
-                  #{@high_season}\n
+                  #{@high_season}
                   #{@low_season}\n"
-            puts "#{@summary_quote}".blue.on_yellow
+            puts "\n#{@summary_quote}".blue.bold
             puts @details
         end
 
@@ -41,7 +41,7 @@ module TravelInspiration
             }
 
             @details = subtitles.map.with_index{|title, index|
-                 "\n" + title.upcase + "\n" + descriptions[index] + "\n"
+                 "\n" + title.upcase.red + "\n" + descriptions[index] + "\n"
             }
         end
 
