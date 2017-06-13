@@ -1,4 +1,3 @@
-require 'pry'
 require_relative 'themes.rb'
 require_relative 'destinations.rb'
 require_relative 'country.rb'

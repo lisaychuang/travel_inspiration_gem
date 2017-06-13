@@ -61,7 +61,9 @@ module TravelInspiration
         end
 
         def url
-            "https://www.lonelyplanet.com/" + @name.downcase.sub(" ", "-") 
+            downcased = @name.downcase
+            dasherized = downcased.gsub(/[\s,]+/,"-")
+            "https://www.lonelyplanet.com/" + dasherized
         end
     end
 end
