@@ -21,7 +21,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/travel_inspiration.
+Bug reports and pull requests are welcome on GitHub at [travel_inspiration repo](https://github.com/lisaychuang/travel_inspiration_gem). 
 
 This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://github.com/dannyd4315/worlds-best-restaurants-cli-gem/blob/master/contributor-covenant.org) code of conduct.
 
