@@ -8,13 +8,15 @@ module TravelInspiration
     class CLI
         
         def start
+            TravelInspiration::ThemeScraper.scrape_themes
             list_themes
         end
 
         def list_themes
             puts "Hello! Which travel inspiration will you like to explore for your next trip?".green.bold
             puts "\nPlease select a theme from 1 - 12".blue.bold
-            theme_arr = TravelInspiration::Theme.list_theme_names
+            
+            theme_arr = TravelInspiration::Theme.all
             puts  theme_arr.map.with_index{|theme, index|
                 "\t#{index+1}. #{theme.name}"
             }
@@ -31,6 +33,7 @@ module TravelInspiration
                 goodbye if input.downcase === "exit"
                 input = input.to_i 
 
+                # input.between?(1,12)
                 if input > 0 && input < 13
                     puts "--------------------------------------------".black.on_white #horizontal divider
                     theme_name = theme_arr[input-1].name.strip
@@ -88,4 +91,4 @@ module TravelInspiration
     end
 end
 
-puts TravelInspiration::CLI.new.start
+# puts TravelInspiration::CLI.new.start
